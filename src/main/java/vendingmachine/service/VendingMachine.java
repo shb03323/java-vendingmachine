@@ -2,13 +2,17 @@ package vendingmachine.service;
 
 import vendingmachine.domain.Coin;
 import vendingmachine.domain.CoinMaker;
+import vendingmachine.domain.Product;
+import vendingmachine.domain.ProductMaker;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class VendingMachine {
 
     private static Map<Coin, Integer> coins;
+    private static List<Product> products;
 
     private static VendingMachine instance;
 
@@ -24,6 +28,11 @@ public class VendingMachine {
     public void setAmount(int inputAmount) {
         CoinMaker coinMaker = new CoinMaker();
         coins = coinMaker.makeCoins(inputAmount);
+    }
+
+    public void setProducts(String inputProducts) {
+        ProductMaker productMaker = new ProductMaker();
+        products = productMaker.makeProduct(inputProducts);
     }
 
     public Map<Integer, Integer> getCoins() {

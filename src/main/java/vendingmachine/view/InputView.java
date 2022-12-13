@@ -12,4 +12,11 @@ public class InputView {
         OutputView.printBlankLine();
         return amount;
     }
+
+    public static String inputProducts() {
+        System.out.println("상품명과 가격, 수량을 입력해 주세요.");
+        String input = Console.readLine();
+        InputValidator.validateProductsInput(input);
+        return input;
+    }
 }

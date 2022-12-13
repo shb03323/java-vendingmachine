@@ -10,6 +10,7 @@ public class MainController {
 
     public void process() {
         saveMachineHoldingAmount();
+        addProducts();
     }
 
     private void saveMachineHoldingAmount() {
@@ -24,6 +25,12 @@ public class MainController {
     }
 
     private void addProducts() {
-
+        try {
+            String productsInput = InputView.inputProducts();
+            vendingMachine.setProducts(productsInput);
+        } catch (IllegalArgumentException exception) {
+            OutputView.printErrorMessage(exception.getMessage());
+            addProducts();
+        }
     }
 }
