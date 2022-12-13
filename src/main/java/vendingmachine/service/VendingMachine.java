@@ -3,6 +3,7 @@ package vendingmachine.service;
 import vendingmachine.domain.Coin;
 import vendingmachine.domain.CoinMaker;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class VendingMachine {
@@ -23,5 +24,13 @@ public class VendingMachine {
     public void setAmount(int inputAmount) {
         CoinMaker coinMaker = new CoinMaker();
         coins = coinMaker.makeCoins(inputAmount);
+    }
+
+    public Map<Integer, Integer> getCoins() {
+        Map<Integer, Integer> coinsToInteger = new HashMap<>();
+        for (Coin coin: coins.keySet()) {
+            coinsToInteger.put(coin.getAmount(), coins.get(coin));
+        }
+        return coinsToInteger;
     }
 }

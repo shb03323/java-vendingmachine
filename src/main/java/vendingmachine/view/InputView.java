@@ -9,6 +9,7 @@ public class InputView {
         String input = Console.readLine();
         int amount = InputValidator.changeToNumber(input);
         InputValidator.validatePrice(amount);
+        OutputView.printBlankLine();
         return amount;
     }
 }

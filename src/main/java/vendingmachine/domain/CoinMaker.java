@@ -28,7 +28,7 @@ public class CoinMaker {
     }
 
     private void issueCoins(int amount) {
-        while (amount == 0) {
+        while (amount > 0) {
             Coin coin = getRandomCoin(amount);
             coins.put(coin, coins.get(coin) + 1);
             amount -= coin.getAmount();

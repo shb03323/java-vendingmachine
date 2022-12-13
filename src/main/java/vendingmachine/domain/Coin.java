@@ -22,7 +22,7 @@ public enum Coin {
 
     public static List<Integer> getAvailableCoins(int holdingAmount) {
         return Arrays.stream(Coin.values())
-                .filter(coin -> coin.amount >= holdingAmount)
+                .filter(coin -> holdingAmount >= coin.amount)
                 .map(coin -> coin.amount)
                 .collect(Collectors.toList());
     }

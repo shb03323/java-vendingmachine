@@ -16,9 +16,14 @@ public class MainController {
         try {
             int amount = InputView.inputMachineHoldingAmount();
             vendingMachine.setAmount(amount);
+            OutputView.printCoinsOfVendingMachine(vendingMachine.getCoins());
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
             saveMachineHoldingAmount();
         }
+    }
+
+    private void addProducts() {
+
     }
 }
