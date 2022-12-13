@@ -5,7 +5,6 @@ import vendingmachine.domain.CoinMaker;
 import vendingmachine.domain.Product;
 import vendingmachine.domain.ProductMaker;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,7 @@ public class VendingMachine {
 
     private static Map<Coin, Integer> coins;
     private static List<Product> products;
+    private static int insertedMoney;
 
     private static VendingMachine instance;
 
@@ -42,5 +42,9 @@ public class VendingMachine {
             coinsToInteger.put(coin.getAmount(), coins.get(coin));
         }
         return coinsToInteger;
+    }
+
+    public void insertMoney(int money) {
+        insertedMoney = money;
     }
 }

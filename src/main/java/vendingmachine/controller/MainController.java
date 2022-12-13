@@ -11,6 +11,7 @@ public class MainController {
     public void process() {
         saveMachineHoldingAmount();
         addProducts();
+        insertMoney();
     }
 
     private void saveMachineHoldingAmount() {
@@ -31,6 +32,16 @@ public class MainController {
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
             addProducts();
+        }
+    }
+
+    private void insertMoney() {
+        try {
+            int money = InputView.inputMoney();
+            vendingMachine.insertMoney(money);
+        } catch (IllegalArgumentException exception) {
+            OutputView.printErrorMessage(exception.getMessage());
+            insertMoney();
         }
     }
 }
