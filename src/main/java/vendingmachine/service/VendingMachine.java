@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class VendingMachine {
 
-    private static int amount;
     private static Map<Coin, Integer> coins;
 
     private static VendingMachine instance;
