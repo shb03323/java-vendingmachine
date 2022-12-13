@@ -6,6 +6,7 @@ import vendingmachine.domain.Product;
 import vendingmachine.domain.ProductMaker;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public class VendingMachine {
     }
 
     public Map<Integer, Integer> getCoins() {
-        Map<Integer, Integer> coinsToInteger = new HashMap<>();
+        Map<Integer, Integer> coinsToInteger = new LinkedHashMap<>();
         for (Coin coin: coins.keySet()) {
             coinsToInteger.put(coin.getAmount(), coins.get(coin));
         }

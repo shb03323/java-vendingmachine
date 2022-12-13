@@ -2,9 +2,8 @@ package vendingmachine.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class CoinMaker {
 
@@ -20,11 +19,11 @@ public class CoinMaker {
     }
 
     private Map<Coin, Integer> initCoins() {
-        return Arrays.stream(Coin.values())
-                .collect(Collectors.toMap(
-                        key -> key,
-                        value -> 0
-                ));
+        Map<Coin, Integer> coins = new LinkedHashMap<>();
+        for (Coin coin: Coin.values()) {
+            coins.put(coin, 0);
+        }
+        return coins;
     }
 
     private void issueCoins(int amount) {
