@@ -23,4 +23,11 @@ public class OutputView {
     public static void printMoneyLeft(int money) {
         System.out.println("투입 금액: " + money + "원");
     }
+
+    public static void printResult(Map<Integer, Integer> coins) {
+        System.out.println("잔돈");
+        for (int coin: coins.keySet()) {
+            System.out.println(coin + "원 - " + coins.get(coin) + "개");
+        }
+    }
 }

@@ -1,7 +1,9 @@
 package vendingmachine.domain;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum Coin {
@@ -32,5 +34,20 @@ public enum Coin {
                 .filter(coin -> coin.amount == coinPrice)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("[ERROR] 해당 금액의 동전을 찾을 수 없습니다."));
+    }
+
+    public static Map<Integer, Integer> getChanges(int money) {
+        Map<Integer, Integer> changes = new LinkedHashMap<>();
+        for (Coin coin: Coin.values()) {
+            int count = 0;
+            while (money >= coin.amount) {
+                count++;
+                money -= coin.amount;
+            }
+            if (count > 0) {
+                changes.put(coin.amount, count);
+            }
+        }
+        return changes;
     }
 }

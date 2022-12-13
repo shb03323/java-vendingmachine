@@ -13,6 +13,7 @@ public class MainController {
         addProducts();
         insertMoney();
         purchaseProduct();
+        getResult();
     }
 
     private void saveMachineHoldingAmount() {
@@ -58,5 +59,9 @@ public class MainController {
             OutputView.printErrorMessage(exception.getMessage());
             purchaseProduct();
         }
+    }
+
+    private void getResult() {
+        OutputView.printResult(vendingMachine.getChanges());
     }
 }

@@ -63,6 +63,10 @@ public class VendingMachine {
         buy(product);
     }
 
+    public Map<Integer, Integer> getChanges() {
+        return Coin.getChanges(insertedMoney);
+    }
+
     private Product findProduct(String productName) {
         return products.stream()
                 .filter(product -> product.isSameName(productName))
