@@ -1,6 +1,6 @@
 package vendingmachine.controller;
 
-import vendingmachine.repository.VendingMachine;
+import vendingmachine.service.VendingMachine;
 import vendingmachine.view.InputView;
 
 public class MainController {

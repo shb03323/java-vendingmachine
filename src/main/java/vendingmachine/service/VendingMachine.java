@@ -1,8 +1,14 @@
-package vendingmachine.repository;
+package vendingmachine.service;
+
+import vendingmachine.domain.Coin;
+import vendingmachine.domain.CoinMaker;
+
+import java.util.Map;
 
 public class VendingMachine {
 
     private static int amount;
+    private static Map<Coin, Integer> coins;
 
     private static VendingMachine instance;
 
@@ -16,6 +22,7 @@ public class VendingMachine {
     private VendingMachine() {}
 
     public void setAmount(int inputAmount) {
-        amount = inputAmount;
+        CoinMaker coinMaker = new CoinMaker();
+        coins = coinMaker.makeCoins(inputAmount);
     }
 }
