@@ -12,6 +12,7 @@ public class MainController {
         saveMachineHoldingAmount();
         addProducts();
         insertMoney();
+        purchaseProduct();
     }
 
     private void saveMachineHoldingAmount() {
@@ -39,9 +40,23 @@ public class MainController {
         try {
             int money = InputView.inputMoney();
             vendingMachine.insertMoney(money);
+            OutputView.printMoneyLeft(money);
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
             insertMoney();
+        }
+    }
+
+    private void purchaseProduct() {
+        try {
+            while (vendingMachine.availableToPurchase()) {
+                String productName = InputView.inputPurchasingProduct();
+                vendingMachine.purchaseProduct(productName);
+                OutputView.printMoneyLeft(vendingMachine.getInsertedMoney());
+            }
+        } catch (IllegalArgumentException exception) {
+            OutputView.printErrorMessage(exception.getMessage());
+            purchaseProduct();
         }
     }
 }

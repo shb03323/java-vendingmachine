@@ -22,6 +22,13 @@ public class InputView {
         return getPrice();
     }
 
+    public static String inputPurchasingProduct() {
+        System.out.println("구매할 상품명을 입력해 주세요.");
+        String input = Console.readLine();
+        OutputView.printBlankLine();
+        return input;
+    }
+
     private static int getPrice() {
         String input = Console.readLine();
         int amount = InputValidator.changeToNumber(input);

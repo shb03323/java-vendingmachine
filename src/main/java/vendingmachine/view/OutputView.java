@@ -19,4 +19,8 @@ public class OutputView {
         }
         printBlankLine();
     }
+
+    public static void printMoneyLeft(int money) {
+        System.out.println("투입 금액: " + money + "원");
+    }
 }

@@ -11,4 +11,17 @@ public class Product {
         this.cost = cost;
         this.count = count;
     }
+
+    public boolean canBuy(int money) {
+        return money >= cost && count > 0;
+    }
+
+    public boolean isSameName(String targetName) {
+        return name.equals(targetName);
+    }
+
+    public int purchaseAndGetRemainMoney(int money) {
+        count--;
+        return money - cost;
+    }
 }
