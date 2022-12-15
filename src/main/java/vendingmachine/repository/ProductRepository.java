@@ -10,7 +10,7 @@ public class ProductRepository {
     private final List<Product> products;
 
     public ProductRepository(String inputProducts) {
-        products = setProducts(inputProducts);
+        this.products = setProducts(inputProducts);
     }
 
     private List<Product> setProducts(String inputProducts) {

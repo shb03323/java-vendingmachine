@@ -6,13 +6,17 @@ import vendingmachine.view.OutputView;
 
 public class MainController {
 
-    private static final VendingMachine vendingMachine = VendingMachine.getInstance();
+    private final VendingMachine vendingMachine;
+
+    public MainController() {
+        this.vendingMachine = new VendingMachine();
+    }
 
     public void process() {
         saveMachineHoldingAmount();
         addProducts();
         insertMoney();
-        purchaseProduct();
+        purchase();
         getResult();
     }
 
@@ -48,17 +52,21 @@ public class MainController {
         }
     }
 
-    private void purchaseProduct() {
+    private void purchase() {
         try {
             while (vendingMachine.availableToPurchase()) {
-                String productName = InputView.inputPurchasingProduct();
-                vendingMachine.purchaseProduct(productName);
-                OutputView.printMoneyLeft(vendingMachine.getInsertedMoney());
+                purchaseProduct();
             }
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception.getMessage());
-            purchaseProduct();
+            purchase();
         }
+    }
+
+    private void purchaseProduct() {
+        String productName = InputView.inputPurchasingProduct();
+        vendingMachine.purchaseProduct(productName);
+        OutputView.printMoneyLeft(vendingMachine.getInsertedMoney());
     }
 
     private void getResult() {
